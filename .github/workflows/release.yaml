@@ -69,12 +69,10 @@ jobs:
 
     - name: Download vcpkg
       if: steps.cache-vcpkg.outputs.cache-hit != 'true'
-      # wget doesn't seem to work under bash.
       shell: 'powershell'
       run: |
-        C:\msys64\usr\bin\wget.exe -nv `
-           https://github.com/microsoft/vcpkg/archive/refs/tags/${{ env.VCPKG_VERSION }}.zip `
-          -O vcpkg.zip
+        Invoke-WebRequest -Uri "https://github.com/microsoft/vcpkg/archive/refs/tags/${{ env.VCPKG_VERSION }}.zip" -OutFile "vcpkg.zip"
+            
     - name: Bootstrap vcpkg
       if: steps.cache-vcpkg.outputs.cache-hit != 'true'
       shell: 'bash'
