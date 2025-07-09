@@ -3,7 +3,6 @@
 # Distributed under MIT license.
 # See file LICENSE for detail or copy at https://opensource.org/licenses/MIT
 
-# Workflow for building the release binaries.
 
 name: Release build / deploy
 on:
